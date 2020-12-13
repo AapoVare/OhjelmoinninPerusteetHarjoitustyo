@@ -3,11 +3,11 @@ Tekijä: Aapo Väre
 Ryhmä:TTV20S2
 Tehtävä: Harjoitustyö
 Kuvaus:
-Ohjelmassa luodaan käyttäjätunnus ja salasana, joita voidaan sitten käyttää sisäänkirjautumista varten.
-Luotuaan käyttäjätunnuksen, ohjelma tallettaa käyttäjänmiet ja salasanat kahteen erilliseen tekstitiedostoon.
+    Ohjelmassa luodaan käyttäjätunnus ja salasana, joita voidaan sitten käyttää sisäänkirjautumista varten.
+    Luotuaan käyttäjätunnuksen, ohjelma tallettaa käyttäjänmiet ja salasanat kahteen erilliseen tekstitiedostoon.
 
-Alunperin oli tarkoitus saada aikaan myös toteutus, jossa ohjelma lukee tekstitiedostojen sisällön,
-jolloin sisäänkirjautuminen onnistuisi myös niissä olevilla tiedoilla, mutta en saanut sitä onnistumaan.
+    Alunperin oli tarkoitus saada aikaan myös toteutus, jossa ohjelma lukee tekstitiedostojen sisällön,
+    jolloin sisäänkirjautuminen onnistuisi myös niissä olevilla tiedoilla, mutta en saanut sitä onnistumaan.
 """
 from getpass import getpass
 käyttäjät = {}
