@@ -57,8 +57,6 @@ def OldUser(): # Here the user logs in with already existing credentials
     for i in range (1,4):
         login = input("Type username: ")
         password = input("Type password: ")
-        FileRead(login, password)
-        print(users)
         if login in users and users[login] == password:
             print("Welcome ", login,"!")
             status_end = ""
