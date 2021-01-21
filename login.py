@@ -73,19 +73,23 @@ def UusiKäyttäjä(): # Tässä luodaan uusi käyttäjätunnus ja kirjoitetaan 
                     print("Salasanat eivät täsmää!")
 
 def VanhaKäyttäjä(): # Tässä Kirjaudutaan sisään jo olemassa olevilla tunnuksilla
-    tunnus = input("Syötä käyttäjänimi: ")
-    salasana = input("Syötä salasana: ")
-    if tunnus in käyttäjät and käyttäjät[tunnus] == salasana:
-        print("Tervetuloa ", tunnus,"!")
-        status_end = ""
-        while status_end != "q": # tämä osio on tässä, jos tulevaisuudessa ohjelmaan haluaa lisätä valikko-toiminnon, toistaiseksi looppaa niin kauan kunnes käyttäjä painaa q
-            # tulosta uusi menu
-            status_end = input("Haluatko aloittaa ohjelman alusta? Paina q lopettaaksesi: ")
-            # riippuen statuksesta/inputista, tee funktio
-        return status_end
-    else:
-        print("Väärä tunnus tai salasana!")
-          
+    for i in range(1,4):
+        tunnus = input("Syötä käyttäjänimi: ")
+        salasana = input("Syötä salasana: ")
+        if tunnus in käyttäjät and käyttäjät[tunnus] == salasana:
+            print("Tervetuloa ", tunnus,"!")
+            status_end = ""
+            while status_end != "q": # tämä osio on tässä, jos tulevaisuudessa ohjelmaan haluaa lisätä valikko-toiminnon, toistaiseksi looppaa niin kauan kunnes käyttäjä painaa q
+                # tulosta uusi menu
+                status_end = input("Haluatko aloittaa ohjelman alusta? Paina q lopettaaksesi: ")
+                # riippuen statuksesta/inputista, tee funktio
+            return status_end
+            break
+        else:
+            print("Väärä tunnus tai salasana!")
+    print("Liian monta väärää yritystä!")
+    status = "q"
+    return status
 while True: # looppaa ohjelmaa niin kauan, kunnes käyttäjä syöttää q ohjelman sitä kysyessä
     status = StarttiMenu()
     if (status == "q"):

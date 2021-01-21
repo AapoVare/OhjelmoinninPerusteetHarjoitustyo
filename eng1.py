@@ -83,4 +83,4 @@ passwords_file.close()
 if new_users != []: # if the list is not empty, prints out the new users made
     print("Following users made: ", new_users)
 print ("Have a good day!")
-# program ends
+# program ends.
