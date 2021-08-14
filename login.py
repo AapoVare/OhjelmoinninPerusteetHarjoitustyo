@@ -7,7 +7,7 @@ Kuvaus:
     Luotuaan käyttäjätunnuksen, ohjelma tallettaa käyttäjänmiet ja salasanat kahteen erilliseen tekstitiedostoon.
 """
 
-# Idea, koita tehdä käyttäjistä oma class olio-ohjelmointikikkoja varten
+# Idea, koita tehdä käyttäjistä oma class olio-ohjelmointikikkoja varten seuraavaksi
 
 from getpass import getpass
 käyttäjät = {}
@@ -35,11 +35,6 @@ def TiedostonLuku():
             lines2[i] = lines2[i][:-1]
         käyttäjät[lines[i]] = lines2[i]
 TiedostonLuku()
-
-
-# Lue tällä tiedostosta onko käyttäjänimi ja salasana jo olemassa, käytä uusikäyttäjässä kun luodaan käyttäjänimeä ja vanhakäyttäjässä kirjautumisen jälkeen
-# Jos syötetyt tunnukset löytyy tiedostosta niin ohjelman pitää onnistua niilläkin
-
 
 def StarttiMenu(): # Tässä aloitusmenu, joka kysyy onko käyttäjätunnus jo rekisteröity vai ei
     status = str(input("Oletko rekisteröity käyttäjä? k/e? Paina q lopettaaksesi: "))
