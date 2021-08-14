@@ -5,17 +5,34 @@ Description:
     The program then writes the usernames and passwords into separate txt files.
     Originally this program was supposed to also be able to read the logins and passwords files so successful logins could be made with the info in them,
     but I failed to implement it correctly.
+    Update: The filereading feature now works as intended.
 """
 from getpass import getpass
 users = {}
 status = ""
 new_users = []
+login_read = "logins.txt"
+password_read = "passwords.txt"
 try:
     logins_file = open ("logins.txt", "x") 
     passwords_file = open ("passwords.txt", "x") # create the files if they don't exist
 except:
     logins_file = open ("logins.txt", "a") 
     passwords_file = open ("passwords.txt", "a") # if the files do exist, open them in appending mode so they won't be overwritten
+
+# reads the information from the password and username files, then adds them to the user list
+def FileRead():
+    file = open(login_read, "r")
+    file2 = open(password_read, "r")
+    lines = file.readlines()
+    lines2 = file2.readlines()
+    for i in range(len(lines)):
+        if lines[i][-1] == '\n':
+            lines[i] = lines[i][:-1]
+        if lines2[i][-1] == '\n':
+            lines2[i] = lines2[i][:-1]
+        users[lines[i]] = lines2[i]
+FileRead()
 
 def StartMenu(): # Start menu that asks the user if they're registered or not
     status = str(input("Are you a registered user? y/n? Press q to quit: "))
@@ -56,7 +73,7 @@ def NewUser(): # Here the user creates a new username and a password
 def OldUser(): # Here the user logs in with already existing credentials
     for i in range (1,4):
         login = input("Type username: ")
-        password = input("Type password: ")
+        password = getpass("Type password: ")
         if login in users and users[login] == password:
             print("Welcome ", login,"!")
             status_end = ""

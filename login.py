@@ -5,10 +5,10 @@ Tehtävä: Harjoitustyö
 Kuvaus:
     Ohjelmassa luodaan käyttäjätunnus ja salasana, joita voidaan sitten käyttää sisäänkirjautumista varten.
     Luotuaan käyttäjätunnuksen, ohjelma tallettaa käyttäjänmiet ja salasanat kahteen erilliseen tekstitiedostoon.
-
-    Alunperin oli tarkoitus saada aikaan myös toteutus, jossa ohjelma lukee tekstitiedostojen sisällön,
-    jolloin sisäänkirjautuminen onnistuisi myös niissä olevilla tiedoilla, mutta en saanut sitä onnistumaan.
 """
+
+# Idea, koita tehdä käyttäjistä oma class olio-ohjelmointikikkoja varten
+
 from getpass import getpass
 käyttäjät = {}
 status = ""
@@ -22,16 +22,21 @@ except:
     tunnukset_file = open ("tunnukset.txt", "a") 
     salasanat_file = open ("salasanat.txt", "a") # Jos tiedostot ovat olemassa, nämä avaavat ne appending tilaan, missä niiden tietoja ei ylikirjoiteta
 
-"""
-Tässä on epäonnistunut aliohjelma, jonka piti suorittaa tiedostojen lukeminen.
-def TiedostonLuku(käyttäjä):
+#Tämä aliohjelma, suorittaa tiedostojen lukemisen ja lisää tiedot käyttäjälistaan
+def TiedostonLuku():
     file = open(tunnus_luku, "r")
-    if luku1 in tunnus_luku:
-        luku1.append(käyttäjät)
     file2 = open(salasana_luku, "r")
-    if luku2 in salasana_luku:
-        luku2.append(käyttäjät)
-"""
+    lines = file.readlines()
+    lines2 = file2.readlines()
+    for i in range(len(lines)):
+        if lines[i][-1] == '\n':
+            lines[i] = lines[i][:-1]
+        if lines2[i][-1] == '\n':
+            lines2[i] = lines2[i][:-1]
+        käyttäjät[lines[i]] = lines2[i]
+TiedostonLuku()
+
+
 # Lue tällä tiedostosta onko käyttäjänimi ja salasana jo olemassa, käytä uusikäyttäjässä kun luodaan käyttäjänimeä ja vanhakäyttäjässä kirjautumisen jälkeen
 # Jos syötetyt tunnukset löytyy tiedostosta niin ohjelman pitää onnistua niilläkin
 
@@ -75,7 +80,7 @@ def UusiKäyttäjä(): # Tässä luodaan uusi käyttäjätunnus ja kirjoitetaan 
 def VanhaKäyttäjä(): # Tässä Kirjaudutaan sisään jo olemassa olevilla tunnuksilla
     for i in range(1,4):
         tunnus = input("Syötä käyttäjänimi: ")
-        salasana = input("Syötä salasana: ")
+        salasana = getpass("Syötä salasana: ")
         if tunnus in käyttäjät and käyttäjät[tunnus] == salasana:
             print("Tervetuloa ", tunnus,"!")
             status_end = ""
